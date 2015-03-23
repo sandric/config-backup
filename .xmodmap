@@ -1,0 +1,23 @@
+! -*- coding: utf-8 -*-
+
+! keycode tab = bracetleft
+! keycode bracetleft = bracetrigth
+
+keycode 23 = bracketleft braceleft bracketleft braceleft bracketleft braceleft
+keycode 34 = bracketright braceright bracketright braceright bracketright braceright
+
+! keycode play = tab
+
+keycode 172 = Tab ISO_Left_Tab Tab ISO_Left_Tab Tab ISO_Left_Tab
+
+! keycode tilda = minus/underscore
+! keycode minus/underscore = plus/equal
+! keycode plus/equal = tilda
+
+keycode 49 = minus underscore minus underscore minus underscore
+keycode 20 = equal plus equal plus equal plus
+keycode 21 = grave asciitilde grave asciitilde grave ascii
+
+! keycode left shift = left alt
+
+keycode 50 = Alt_L Meta_L Alt_L Meta_L
