@@ -139,10 +139,10 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
       
       case 42: buttonChanged = 42; modChanged = 0; break;
       
-      case 19: buttonChanged = 42; modChanged = 0; break; //leftShift + P - BACKSPACE
-      case 23: buttonChanged = 40; modChanged = 0; break; //leftShift + T - ENTER
-      case 9: buttonChanged = 76; modChanged = 0; break; //leftShift + F - DELETE
-      case 22: buttonChanged = 43; modChanged = 0; break; //leftShift + S - TAB
+      //case 19: buttonChanged = 42; modChanged = 0; break; //leftShift + P - BACKSPACE
+      //case 23: buttonChanged = 40; modChanged = 0; break; //leftShift + T - ENTER
+      //case 9: buttonChanged = 76; modChanged = 0; break; //leftShift + F - DELETE
+      //case 22: buttonChanged = 43; modChanged = 0; break; //leftShift + S - TAB
     
       case 44: buttonChanged = 26; modChanged = 4; break; //leftShift + Space - alt + w  
     }
@@ -173,10 +173,10 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
       case 39: buttonChanged = 56; modChanged = 2; break; //?
       
       //Make myself a pavlog-dog to push me using another buttons for enter/backspace/delete/tab
-      case 40: buttonChanged = 30; modChanged = 2; break; //!
-      case 42: buttonChanged = 30; modChanged = 2; break; //!
-      case 43: buttonChanged = 30; modChanged = 2; break; //!
-      case 76: buttonChanged = 30; modChanged = 2; break; //!
+      //case 40: buttonChanged = 30; modChanged = 2; break; //!
+      //case 42: buttonChanged = 30; modChanged = 2; break; //!
+      //case 43: buttonChanged = 30; modChanged = 2; break; //!
+      //case 76: buttonChanged = 30; modChanged = 2; break; //!
     }
   }
   if(mod == 3) {    
