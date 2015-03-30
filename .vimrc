@@ -79,9 +79,9 @@ Plugin 'honza/vim-snippets'
 
 Plugin 'yegappan/greplace'
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-p>"
-let g:UltiSnipsJumpBackwardTrigger="<c-v>"
+let g:UltiSnipsExpandTrigger="<c-t>"
+let g:UltiSnipsJumpForwardTrigger="<c-s>"
+let g:UltiSnipsJumpBackwardTrigger="<c-r>"
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -145,7 +145,7 @@ nnoremap f :wincmd W<CR>
 nnoremap s :wincmd w<CR>
 
 vmap t y
-noremap t yy
+nnoremap t yy
 
 nnoremap e <C-r>
 nnoremap l N
