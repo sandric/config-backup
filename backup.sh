@@ -29,3 +29,6 @@ cp -R ~/.config/fish/functions fish/.
 
 mkdir -p bin
 cp ~/bin/cmus bin/.
+
+mkdir -p vimfootswitch
+cp -R ~/vimfootswitch/* vimfootswitch/.
