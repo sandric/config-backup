@@ -63,7 +63,7 @@ onpress   = Proc.new do
   raise "xte failed to hit key" unless system("xte 'key Escape'")
 end  
 onrelease = Proc.new do 
-  raise "xte failed to hit key" unless system("xte 'key i'")
+  raise "xte failed to hit key" unless system("xte 'keydown Control_L' 'keydown j' 'keyup j' 'keyup Control_L'")
 end  
 
 # Run Forrest Run!

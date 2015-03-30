@@ -137,8 +137,6 @@ nmap tt :w<CR>
 nmap ta :wq<CR>
 
 nnoremap <C-j> i
-inoremap <C-j> <Esc>
-vnoremap <C-j> <Esc>
 
 nnoremap w :bp<CR>
 nnoremap r :bn<CR>
