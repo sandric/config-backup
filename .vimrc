@@ -47,8 +47,6 @@ Plugin 'git://git.wincent.com/command-t.git'
 
 Plugin 'vim-ruby/vim-ruby'
 
-Plugin 'xieyu/pyclewn'
-
 Plugin 'vim-scripts/Conque-GDB'
 
 Plugin 'airblade/vim-gitgutter'
@@ -75,6 +73,16 @@ Plugin 'walm/jshint.vim'
 
 Plugin 'scrooloose/nerdcommenter'
 
+Plugin 'SirVer/ultisnips'
+
+Plugin 'honza/vim-snippets'
+
+Plugin 'yegappan/greplace'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-p>"
+let g:UltiSnipsJumpBackwardTrigger="<c-v>"
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -99,19 +107,19 @@ filetype plugin indent on    " required
 " Make :help appear in a full-screen tab, instead of a window
 "============================================================================
 
-    "Only apply to .txt files...
-    augroup HelpInTabs
-        autocmd!
-        autocmd BufEnter  *.txt   call HelpInNewTab()
-    augroup END
+"Only apply to .txt files...
+augroup HelpInTabs
+  autocmd!
+  autocmd BufEnter  *.txt   call HelpInNewTab()
+augroup END
 
-    "Only apply to help files...
-    function! HelpInNewTab ()
-        if &buftype == 'help'
-            "Convert the help window to a tab...
-            execute "normal \<C-W>T"
-        endif
-    endfunction
+"Only apply to help files...
+function! HelpInNewTab ()
+  if &buftype == 'help'
+    "Convert the help window to a tab...
+    execute "normal \<C-W>T"
+  endif
+endfunction
 
 
 let mapleader=","
@@ -170,3 +178,8 @@ set background=light
 
 
 set tabstop=2
+
+"" Removes trailing spaces
+function! TrimWhiteSpace()
+   %s/\s\+$//e
+endfunction
