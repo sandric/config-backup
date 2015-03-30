@@ -138,13 +138,13 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
       case 39: buttonChanged = 39; modChanged = 0; break; //0
       
       case 42: buttonChanged = 42; modChanged = 0; break;
-      
-      //case 19: buttonChanged = 42; modChanged = 0; break; //leftShift + P - BACKSPACE
-      //case 23: buttonChanged = 40; modChanged = 0; break; //leftShift + T - ENTER
-      //case 9: buttonChanged = 76; modChanged = 0; break; //leftShift + F - DELETE
-      //case 22: buttonChanged = 43; modChanged = 0; break; //leftShift + S - TAB
     
       case 44: buttonChanged = 26; modChanged = 4; break; //leftShift + Space - alt + w  
+      
+      case 21: buttonChanged = 21; modChanged = 1; break; //leftShift + r - control + r  
+      case 22: buttonChanged = 22; modChanged = 1; break; //leftShift + r - control + s 
+      case 23: buttonChanged = 23; modChanged = 1; break; //leftShift + r - control + t 
+      
     }
   }
   if(mod == 4) {
