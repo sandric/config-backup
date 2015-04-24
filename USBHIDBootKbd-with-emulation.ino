@@ -139,7 +139,7 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
       
       case 42: buttonChanged = 42; modChanged = 0; break;
     
-      case 44: buttonChanged = 26; modChanged = 4; break; //leftShift + Space - alt + w  
+      case 44: buttonChanged = 4; modChanged = 1; break; //leftShift + Space - ctrl + t  
       
       case 21: buttonChanged = 21; modChanged = 1; break; //leftShift + r - control + r  
       case 22: buttonChanged = 22; modChanged = 1; break; //leftShift + r - control + s 

@@ -32,3 +32,6 @@ cp ~/bin/cmus bin/.
 
 mkdir -p vimfootswitch
 cp -R ~/vimfootswitch/* vimfootswitch/.
+
+mkdir -p snippets
+cp -R ~/.vim/UltiSnips/* snippets/.

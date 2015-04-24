@@ -56,6 +56,7 @@ Plugin 'moll/vim-node'
 Plugin 'scrooloose/nerdtree'
 
 Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Shougo/neocomplete.vim'
 
 Plugin 'marijnh/tern_for_vim'
 
@@ -79,9 +80,19 @@ Plugin 'honza/vim-snippets'
 
 Plugin 'yegappan/greplace'
 
-let g:UltiSnipsExpandTrigger="<c-t>"
-let g:UltiSnipsJumpForwardTrigger="<c-s>"
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+
+Plugin 'ekalinin/Dockerfile.vim'
+
+let g:UltiSnipsExpandTrigger="<c-a>"
+let g:UltiSnipsJumpForwardTrigger="<c-t>"
 let g:UltiSnipsJumpBackwardTrigger="<c-r>"
+
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
+autocmd FileType javascript setlocal omnifunc=tern#Complete
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -129,6 +140,7 @@ nnoremap / /\v
 set ignorecase
 set incsearch
 set hlsearch
+set hidden
 
 nnoremap q :set nohlsearch!<CR>
 
@@ -137,6 +149,9 @@ nmap tt :w<CR>
 nmap ta :wq<CR>
 
 nnoremap <C-j> i
+
+"inoremap <Home> <C-o>b
+"inoremap <End>  <C-o>e
 
 nnoremap w :bp<CR>
 nnoremap r :bn<CR>
@@ -151,6 +166,10 @@ nnoremap e <C-r>
 nnoremap l N
 
 nnoremap y :vs
+
+inoremap <C-s> <C-o>"_daw
+
+"inoremap <C-j> <Esc>:
 
 vmap h <Plug>NERDCommenterToggle
 nmap h <Plug>NERDCommenterToggle

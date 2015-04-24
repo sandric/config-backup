@@ -1,5 +1,7 @@
 #path
 set -gx PATH /home/sandric/bin $PATH
+set -gx GOPATH /home/sandric/go
+set -gx PATH /home/sandric/go/bin $PATH 
 
 #aliases
 

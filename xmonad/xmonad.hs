@@ -263,8 +263,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      restart "xmonad" True)
 
   -- Toggle xinerama screen
-  , ((modMask, xK_w),
-     nextScreen)
+  {-, ((modMask, xK_w),-}
+     {-nextScreen)-}
 
   -- Toggle workspaces
   , ((modMask, xK_i), 
