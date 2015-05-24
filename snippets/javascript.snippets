@@ -1,0 +1,168 @@
+#variables and constants level
+
+#variables
+
+snippet v "variable" i
+var ${1:name};
+endsnippet
+
+snippet vbf "varidable boolean with initialization as false" i
+var ${1:name} = false;
+endsnippet
+
+snippet vbt "varidable boolean with initialization as true" i
+var ${1:name} = true;
+endsnippet
+
+snippet vn "varidable integer with initialization" i
+var ${1:name} = ${2:0};
+endsnippet
+
+snippet vf "varidable float with initialization" i
+var ${1:name} = ${2:0};
+endsnippet
+
+snippet vs "varidable string with initialization" i
+var ${1:name} = '${2}';
+endsnippet
+
+snippet va "variable array with initialization" i
+var ${1:name} = [${2}];
+endsnippet
+
+snippet vh "variable hash with initialization" i
+var ${1:name} = {${2}};
+endsnippet
+
+#constants
+
+snippet cbf "constant boolean with initialization as false" i
+const ${1:name} = false;
+endsnippet
+
+snippet cbt "constant boolean with initialization as true" i
+const ${1:name} = true;
+endsnippet
+
+snippet cnn "constant integer with initialization" i
+const ${1:name} = 0;
+endsnippet
+
+snippet cff "constant float with initialization" i
+const ${1:name} = 0;
+endsnippet
+
+snippet css "constant string with initialization" i
+const ${1:name} = '';
+endsnippet
+
+
+#block level
+
+snippet i "if block" b
+if (${1:condition}){
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet e "else block" b
+else {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet ie "if-else block" b
+if (${1:condition}) {
+	${2:${VISUAL}}
+} else {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet f "for block" b
+for (var ${1:i} := 0; $1 < ${2:N}; $1++) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fi "for-in block" b
+for (${1:prop} in ${2:object}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet w "while block" b
+while (${1:condition}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet s "switch block" b
+switch (${1:expression})} {
+	case '${2:case}':
+		${3};
+		break;
+		${4}
+		default:
+			${5}			
+}
+endsnippet
+
+snippet sc "case block" b
+case '${1:case}':
+	${2};
+	break;
+endsnippet
+
+snippet sd "default block" b
+default:
+	${0:};
+endsnippet
+
+snippet r "return" b
+return ${0:};
+endsnippet
+
+#architecture level
+
+snippet cl "class block" b
+type ${1:Struct} struct {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet in "interface block" b
+type ${1:Interface} interface {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fu "function block" i
+function ${1:}(${2:params}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fur "function with receiver block" b
+${1:receiver}.${3:name}(${4:params}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+
+#global level
+
+snippet h "headers declaration" b
+var $1 = require('$1');
+endsnippet
+
+
+#additional snippets
+
+snippet p "print" i
+console.log("$0");
+endsnippet
+
+snippet po "print object" i
+console.log("$1:", $1);
+endsnippet

@@ -15,9 +15,6 @@ sleep 1 && feh --bg-center ~/berserk.png &
 # Start the system tray
 tray &
 
-# Load vimfootswitch
-cd /home/sandric/vimfootswitch/ && sudo ./vimfootswitch.rb nohup > /dev/null &
-
 # Start two terminals
 terminator &
 

@@ -100,6 +100,33 @@ void KbdRptParser::PrintKey(uint8_t key, uint8_t mod)
 
 void parseKeystroke(uint8_t key, uint8_t mod) {
   uint8_t buttonChanged, modChanged;
+  if(mod == 0) {
+    switch(key){
+      case 51: buttonChanged = 20; modChanged = 1; break; //; - :
+      case 30: buttonChanged = 30; modChanged = 2; break; //!
+      case 31: buttonChanged = 35; modChanged = 2; break; //^
+      case 32: buttonChanged = 33; modChanged = 2; break; //$
+      case 33: buttonChanged = 37; modChanged = 2; break; //*
+      case 34: buttonChanged = 36; modChanged = 2; break; //&
+      case 35: buttonChanged = 49; modChanged = 2; break; //|
+      case 36: buttonChanged = 32; modChanged = 2; break; //#
+      case 37: buttonChanged = 31; modChanged = 2; break; //@
+      case 38: buttonChanged = 34; modChanged = 2; break; //%
+      case 39: buttonChanged = 56; modChanged = 2; break; //?
+      
+      case 45: buttonChanged = 49; modChanged = 0; break; //?
+      
+      case 47: buttonChanged = 51; modChanged = 2; break; //{ - ;
+      
+      case 49: buttonChanged = 14; modChanged = 1; break; //?
+      
+      //Make myself a pavlog-dog to push me using another buttons for enter/backspace/delete/tab
+      //case 40: buttonChanged = 30; modChanged = 2; break; //!
+      //case 42: buttonChanged = 30; modChanged = 2; break; //!
+      //case 43: buttonChanged = 30; modChanged = 2; break; //!
+      //case 76: buttonChanged = 30; modChanged = 2; break; //!
+    }
+  }
   if(mod == 2) {
     switch(key) {
       case 24: buttonChanged = 82; modChanged = 0; break; //LeftShift + U - up arrow
@@ -110,8 +137,8 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
       case 15: buttonChanged = 74; modChanged = 0; break; //LeftShift + L - home
       case 28: buttonChanged = 77; modChanged = 0; break; //LeftShift + Y - end
       
-      case 18: buttonChanged = 75; modChanged = 0; break; //leftShift + O - UP
-      case 56: buttonChanged = 78; modChanged = 0; break; //leftShift + / - DOWN
+      case 18: buttonChanged = 10; modChanged = 1; break; //leftShift + O - UP
+      case 56: buttonChanged = 7;  modChanged = 1; break; //leftShift + / - DOWN
       
       case 10: buttonChanged = 47; modChanged = 2; break; //leftShift + G - {
       case 13: buttonChanged = 48; modChanged = 2; break; //leftShift + J - }
@@ -145,44 +172,51 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
       case 22: buttonChanged = 22; modChanged = 1; break; //leftShift + r - control + s 
       case 23: buttonChanged = 23; modChanged = 1; break; //leftShift + r - control + t 
       
+      case 51: buttonChanged = 18; modChanged = 1; break; //leftShift + r - control + t 
+      
+      case 19: buttonChanged = 19; modChanged = 1; break; //leftShift + p - control + p 
+      case 26: buttonChanged = 26; modChanged = 1; break; //leftShift + w - control + w 
+      
+      //case 52: buttonChanged = 11; modChanged = 1; break; //?
+      
+      case 47: buttonChanged = 51; modChanged = 0; break; //
+      
+      case 49: buttonChanged = 5; modChanged = 1; break; //?
+      
+      case 9: buttonChanged = 9; modChanged = 1; break; //?
     }
   }
   if(mod == 4) {
     switch(key) {
-      case 43: buttonChanged = 54; modChanged = 2; break; //Shuffle - ,
+      case 43: buttonChanged = 75; modChanged = 0; break; //Shuffle - ,
+    }
+  }
+  if(mod == 6) {
+    switch(key) {
+      case 17: buttonChanged = 17; modChanged = 1; break; //shift + alt n - ctrl + n
+      case 12: buttonChanged = 13; modChanged = 1; break; //shift + alt i - ctrl + j
+      case 24: buttonChanged = 24; modChanged = 1; break; //shift + alt u - ctrl + u
+      case 8:  buttonChanged = 8;  modChanged = 1; break; //shift + alt e - ctrl + e
+      case 15: buttonChanged = 15; modChanged = 1; break; //shift + alt j - ctrl + l
+      case 28: buttonChanged = 28; modChanged = 1; break; //shift + alt y - ctrl + y
+      
+      case 43: buttonChanged = 29; modChanged = 1; break; //Shuffle - ,
     }
   }
   if(mod == 8) {
     switch(key) {
-      case 7: buttonChanged = 55; modChanged = 2; break; //Shuffle - .
-    }
-  }
-  if(mod == 0) {
-    switch(key){
-      case 51: buttonChanged = 51; modChanged = 2; break; //; - :
-      case 47: buttonChanged = 51; modChanged = 0; break; //{ - ;
-      case 30: buttonChanged = 30; modChanged = 2; break; //!
-      case 31: buttonChanged = 35; modChanged = 2; break; //^
-      case 32: buttonChanged = 33; modChanged = 2; break; //$
-      case 33: buttonChanged = 37; modChanged = 2; break; //*
-      case 34: buttonChanged = 36; modChanged = 2; break; //&
-      case 35: buttonChanged = 49; modChanged = 2; break; //|
-      case 36: buttonChanged = 32; modChanged = 2; break; //#
-      case 37: buttonChanged = 31; modChanged = 2; break; //@
-      case 38: buttonChanged = 34; modChanged = 2; break; //%
-      case 39: buttonChanged = 56; modChanged = 2; break; //?
-      
-      //Make myself a pavlog-dog to push me using another buttons for enter/backspace/delete/tab
-      //case 40: buttonChanged = 30; modChanged = 2; break; //!
-      //case 42: buttonChanged = 30; modChanged = 2; break; //!
-      //case 43: buttonChanged = 30; modChanged = 2; break; //!
-      //case 76: buttonChanged = 30; modChanged = 2; break; //!
+      case 7: buttonChanged = 78; modChanged = 0; break; //Shuffle - .
     }
   }
   if(mod == 3) {    
       switch(key) {
       case 17: buttonChanged = 80; modChanged = 1; break;
       case 12: buttonChanged = 79; modChanged = 1; break;
+    }
+  }
+  if(mod == 10) {    
+      switch(key) {
+      case 7: buttonChanged = 27; modChanged = 1; break;
     }
   }
   if(buttonChanged || modChanged) {
