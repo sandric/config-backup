@@ -76,7 +76,9 @@ Plugin 'osyo-manga/vim-over'
 
 Plugin 'digitaltoad/vim-jade'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'sandric/ctrlp.vim'
+
+Plugin 'sandric/ctrlsf'
 
 Plugin 'bling/vim-airline'
 
@@ -84,8 +86,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 
 Plugin 'sjl/badwolf'
 
-Plugin 'rking/ag.vim'
-
+Plugin 'mattn/emmet-vim'
 
 let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsJumpForwardTrigger="<c-t>"
@@ -110,12 +111,20 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
-
 let g:airline_powerline_fonts = 1
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 
-let g:agprg="/usr/bin/ag"
+autocmd FileType html let b:emmet=1
+
+function AssignSnippet()
+  if exists("b:emmet")
+    inoremap <C-a> <C-o>:call emmet#expandAbbr(3, "")<CR>
+  endif
+endfun
+
+autocmd FileType * call AssignSnippet()
+
 
 call vundle#end()
 
@@ -133,16 +142,14 @@ colo badwolf
 nnoremap <C-o> <Esc><Esc>:
 nnoremap <C-q> <Esc><Esc>
 
-inoremap <C-a> <Esc><C-a><C-a>
-
 "Saving/Closing
-nmap a :bd<CR>
-nmap t :w<CR>
-nmap q :q!<CR>
+nnoremap a :bd<CR>
+nnoremap t :w<CR>
+nnoremap q :q!<CR>
 
 "Window/Buffer manipulation
-inoremap <C-u> <Esc>:wincmd h<CR>i
-inoremap <C-e> <Esc>:wincmd l<CR>i
+inoremap <C-u> <Esc>:wincmd l<CR>i
+inoremap <C-e> <Esc>:wincmd h<CR>i
 inoremap <C-n> <Esc>:bp<CR>i
 inoremap <C-j> <Esc>:bn<CR>i
 inoremap <C-l> <Esc>:vertical res +5<CR>i
@@ -164,7 +171,6 @@ vnoremap <C-t> y
 vnoremap <C-f> <End><Esc><Esc>v<Home>yi<End>
 vnoremap <C-s> iwyi<End>
 vnoremap <C-o> <Esc><Esc>
-"vnoremap : <Esc><Esc>
 vnoremap ( d
 vnoremap = d
 vnoremap b iB
@@ -222,8 +228,7 @@ nnoremap nt :NERDTreeToggle<CR>
 
 "CtrlP
 inoremap <C-g> <Esc><C-g>
+nnoremap <C-g> <Esc>i
 
-"Ag
-inoremap <C-d> <Esc>:Ag 
-nnoremap <C-d> <Esc>:Ag 
-vnoremap <C-d> y<C-o>:Ag <C-R>"t
+"Ctrlsf
+inoremap <C-d> <Esc>:CtrlSF 
