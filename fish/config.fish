@@ -39,3 +39,8 @@ end
 
 
 set -x TERM xterm-256color
+
+
+#fzf settings
+set -x FZF_DEFAULT_OPTS '--bind ctrl-a:abort, :accept'
+fzf_key_bindings
