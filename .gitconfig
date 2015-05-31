@@ -3,3 +3,5 @@
   name = sandric
 [core]
 	excludesfile = /home/sandric/.gitignore
+[push]
+	default = simple

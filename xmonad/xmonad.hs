@@ -267,10 +267,21 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      nextScreen)
 
   -- Toggle workspaces
-  , ((modMask, xK_i), 
+  , ((modMask, xK_i),
      nextWS)
-  , ((modMask, xK_n), 
+  , ((modMask, xK_n),
      prevWS)
+
+  -- Chrome
+  -- open new tab
+  , ((modMask .|. shiftMask, xK_t), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+t'")
+  , ((modMask .|. shiftMask, xK_d), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+w'")
+  , ((modMask .|. shiftMask, xK_f), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+Page_Up'")
+  , ((modMask .|. shiftMask, xK_s), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+Page_Down'")
+  , ((modMask .|. shiftMask, xK_r), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+r'")
+  , ((modMask .|. shiftMask, xK_v), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+l'")
+  , ((modMask .|. shiftMask, xK_space), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+shift+j'")
+
   ]
 
 ------------------------------------------------------------------------
@@ -328,7 +339,7 @@ myStatusBar = "conky"
 
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
-  
+
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
