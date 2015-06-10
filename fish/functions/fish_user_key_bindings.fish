@@ -1,13 +1,16 @@
 function fish_user_key_bindings
-  bind \cf backward-word
-  #bind \cs custom_remove_word
-  bind -M insert \cs forward-char forward-char backward-word kill-word
+  bind \cf custom_kill_line
+  bind \cs custom_kill_word
 end
 
-function custom_remove_word
-  #commandline -f backward-word
-  commandline -f forward-char
-  commandline -f forward-char
+function custom_kill_line
+  commandline -f backward-kill-line
+  commandline -f end-of-line
+end
+
+function custom_kill_word
+  commandline -f kill-word
   commandline -f backward-word
-  #commandline -f kill-word
+  commandline -f forward-char
+  commandline -f forward-char
 end
