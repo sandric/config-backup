@@ -2,6 +2,7 @@
 set -gx PATH /home/sandric/bin $PATH
 set -gx GOPATH /home/sandric/go
 set -gx PATH /home/sandric/go/bin $PATH
+set -gx PATH /usr/lib/firefox $PATH
 
 #aliases
 
@@ -42,5 +43,5 @@ set -x TERM xterm-256color
 
 
 #fzf settings
-set -x FZF_DEFAULT_OPTS '--bind ctrl-a:abort, :accept'
+set -x FZF_DEFAULT_OPTS '--bind ctrl-a:abort,\ :accept'
 fzf_key_bindings

@@ -115,6 +115,8 @@ let g:airline_powerline_fonts = 1
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 
+let g:syntastic_echo_current_error = 1
+
 autocmd FileType html let b:emmet=1
 
 function AssignSnippet()

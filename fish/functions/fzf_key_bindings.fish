@@ -15,11 +15,12 @@ function fzf_key_bindings
   end
 
   function __fzf_ctrl_t
-    #pkill -9 fzf
-    command find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
+    #-o -path '*/\.*'
+    command find "$PWD" \( -path '/run' -o -path '/dev' -o -path '/var' -o -path '/sys' -o -fstype 'dev' -o -fstype 'proc' -o ! -readable \) -prune \
       -o -type f -print \
-      -o -type d -print \
-      -o -type l -print | sed 1d | cut -b3- | fzf -m > $TMPDIR/fzf.result
+      -o -type d -print | sed 1d | cut -b3- | fzf > $TMPDIR/fzf.result
+
+      #-o -type l -print | sed 1d | cut -b3- | fzf > $TMPDIR/fzf.result
 
     and commandline -i (cat $TMPDIR/fzf.result | __fzf_escape)
     commandline -f repaint
