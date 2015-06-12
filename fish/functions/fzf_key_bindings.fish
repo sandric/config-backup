@@ -15,12 +15,15 @@ function fzf_key_bindings
   end
 
   function __fzf_ctrl_t
-    #-o -path '*/\.*'
-    command find "$PWD" \( -path '/run' -o -path '/dev' -o -path '/var' -o -path '/sys' -o -fstype 'dev' -o -fstype 'proc' -o ! -readable \) -prune \
+    set current_dir $PWD
+    if test $current_dir = /
+      set current_dir_length 2
+    else
+      set current_dir_length (expr length $PWD + 2)
+    end
+    command find $current_dir \( -path '/run' -o -path '/dev' -o -path '/var' -o -path '/sys' -o -fstype 'dev' -o -fstype 'proc' -o ! -readable \) -prune \
       -o -type f -print \
-      -o -type d -print | sed 1d | cut -b3- | fzf > $TMPDIR/fzf.result
-
-      #-o -type l -print | sed 1d | cut -b3- | fzf > $TMPDIR/fzf.result
+      -o -type d -print | sed 1d | cut -c$current_dir_length- | fzf > $TMPDIR/fzf.result
 
     and commandline -i (cat $TMPDIR/fzf.result | __fzf_escape)
     commandline -f repaint
@@ -35,7 +38,6 @@ function fzf_key_bindings
   end
 
   function __fzf_alt_c
-    # Fish hangs if the command before pipe redirects (2> /dev/null)
     command find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) \
       -prune -o -type d -print 2> /dev/null | sed 1d | cut -b3- | eval (__fzfcmd) +m > $TMPDIR/fzf.result
     [ (cat $TMPDIR/fzf.result | wc -l) -gt 0 ]
