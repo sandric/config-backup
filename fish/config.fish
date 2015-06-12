@@ -38,6 +38,10 @@ function gc
   git commit -m "$argv"
 end
 
+function gp
+  git push $argv
+end
+
 
 set -x TERM xterm-256color
 

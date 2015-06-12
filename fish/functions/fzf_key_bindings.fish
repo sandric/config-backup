@@ -15,6 +15,11 @@ function fzf_key_bindings
   end
 
   function __fzf_ctrl_t
+
+    if test (commandline) = 'v '
+      set is_with_command_prefix 1
+    end
+
     set current_dir $PWD
     if test $current_dir = /
       set current_dir_length 2
@@ -28,6 +33,12 @@ function fzf_key_bindings
     and commandline -i (cat $TMPDIR/fzf.result | __fzf_escape)
     commandline -f repaint
     rm -f $TMPDIR/fzf.result
+
+    if test $is_with_command_prefix
+      #set -x history (commandline) $history
+      eval (commandline)
+      commandline -r ''
+    end
   end
 
   function __fzf_ctrl_r
