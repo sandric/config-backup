@@ -35,7 +35,6 @@ function fzf_key_bindings
     rm -f $TMPDIR/fzf.result
 
     if test $is_with_command_prefix
-      #set -x history (commandline) $history
       eval (commandline)
       commandline -r ''
     end
