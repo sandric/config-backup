@@ -145,7 +145,7 @@ nnoremap <C-o> <Esc><Esc>:
 nnoremap <C-q> <Esc><Esc>
 
 "Saving/Closing
-nnoremap a :bd<CR>
+"nnoremap a :bd<CR>
 nnoremap t :w<CR>
 nnoremap q :q!<CR>
 
@@ -234,3 +234,13 @@ nnoremap <C-g> <Esc>i
 
 "Ctrlsf
 inoremap <C-d> <Esc>:CtrlSF 
+
+inoremap <C-F2> <Esc>i
+inoremap <C-F3> <Esc>i
+inoremap <C-F4> <Esc>i
+inoremap <C-F5> <Esc>i
+inoremap <C-F6> <Esc>i
+inoremap <C-F7> <Esc>i
+inoremap <C-F8> <Esc>i
+inoremap <C-F9> <Esc>i
+inoremap <C-F10> <Esc>i

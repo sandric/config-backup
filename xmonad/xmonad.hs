@@ -19,6 +19,9 @@ import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Actions.CycleWS
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Actions.SpawnOn
+import XMonad.Actions.WindowGo
 
 ------------------------------------------------------------------------
 -- Terminal
@@ -274,13 +277,19 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Chrome
   -- open new tab
-  , ((modMask .|. shiftMask, xK_t), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+t'")
-  , ((modMask .|. shiftMask, xK_d), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+w'")
-  , ((modMask .|. shiftMask, xK_f), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+Page_Up'")
-  , ((modMask .|. shiftMask, xK_s), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+Page_Down'")
-  , ((modMask .|. shiftMask, xK_r), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+r'")
-  , ((modMask .|. shiftMask, xK_v), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+l'")
-  , ((modMask .|. shiftMask, xK_space), spawn "xdotool search --onlyvisible --class 'Chrome' windowfocus key 'ctrl+shift+j'")
+  , ((controlMask,xK_F2), spawn "xdotool key 'alt+e'; sudo xdotool key 'ctrl+t'")
+  , ((controlMask,xK_F3), spawn "xdotool key 'alt+e'; sudo xdotool key 'ctrl+w'")
+  , ((controlMask,xK_F5), spawn "xdotool key 'alt+e'; sudo xdotool key 'ctrl+Page_Up'")
+  , ((controlMask,xK_F6), spawn "xdotool key 'alt+e'; sudo xdotool key 'ctrl+Page_Down'")
+  , ((controlMask,xK_F4), spawn "xdotool key 'alt+e'; sudo xdotool key 'ctrl+r'; xdotool key 'alt+e'")
+  {-, ((F3), spawn "xdotool key 'alt+e';sudo xdotool key 'ctrl+l'")-}
+  {-, ((F3), spawn "sudo xdotool key 'alt+e';sudo xdotool key 'ctrl+shift+j'")-}
+
+  , ((modMask, xK_g),
+    raise (className =? "Chrome")
+    spawn "xdotool key 'ctrl+t'"
+    )
+  {-, ((modMask, xK_g), spawnOn "5:web" "google-chrome-stable")-}
 
   ]
 
@@ -340,15 +349,16 @@ myStatusBar = "conky"
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
 
-  xmonad $ defaults {
+  xmonad $ ewmh defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
           , ppSep = "   "
       }
-      , manageHook = manageDocks <+> myManageHook
+      , manageHook = manageDocks <+> manageSpawn <+> myManageHook
       , startupHook = setWMName "LG3D"
+      , handleEventHook = handleEventHook defaultConfig <+> XMonad.Layout.Fullscreen.fullscreenEventHook
   }
 
 
@@ -377,6 +387,6 @@ defaults = defaultConfig {
     -- hooks, layouts
     layoutHook         = smartBorders $ myLayout,
     manageHook         = myManageHook,
-    startupHook        = myStartupHook,
-    handleEventHook    = fullscreenEventHook
+    startupHook        = myStartupHook
+    {-handleEventHook    = fullscreenEventHook-}
 }

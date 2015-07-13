@@ -3,12 +3,7 @@ function fish_user_key_bindings
   bind \cs custom_kill_word
   bind -k ppage custom_parent_dir
   bind -k npage custom_prev_dir
-  bind \cq custom_ll
-end
-
-function custom_ll
-  ll
-  commandline -f 'repaint'
+  bind \cq custom_list_dir
 end
 
 function custom_kill_line
@@ -31,4 +26,9 @@ end
 function custom_prev_dir
   commandline -f 'repaint'
   prevd
+end
+
+function custom_list_dir
+  commandline -f 'repaint'
+  ll
 end

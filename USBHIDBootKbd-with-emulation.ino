@@ -195,12 +195,22 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
     switch(key) {
       case 17: buttonChanged = 17; modChanged = 1; break; //shift + alt n - ctrl + n
       case 12: buttonChanged = 13; modChanged = 1; break; //shift + alt i - ctrl + j
-      case 24: buttonChanged = 24; modChanged = 1; break; //shift + alt u - ctrl + u
-      case 8:  buttonChanged = 8;  modChanged = 1; break; //shift + alt e - ctrl + e
-      case 15: buttonChanged = 15; modChanged = 1; break; //shift + alt j - ctrl + l
-      case 28: buttonChanged = 28; modChanged = 1; break; //shift + alt y - ctrl + y
+      case 24: buttonChanged = 28; modChanged = 1; break; //shift + alt u - ctrl + u
+      case 8:  buttonChanged = 15;  modChanged = 1; break; //shift + alt e - ctrl + e
+      case 15: buttonChanged = 8; modChanged = 1; break; //shift + alt j - ctrl + l
+      case 28: buttonChanged = 24; modChanged = 1; break; //shift + alt y - ctrl + y
       
       case 43: buttonChanged = 29; modChanged = 1; break; //Shuffle - ,
+      
+      //browser
+      
+      case 23: buttonChanged = 59; modChanged = 1; break; //shift+alt+t - F2
+      case 7:  buttonChanged = 60; modChanged = 1; break; //shift+alt+d - F3
+      case 21: buttonChanged = 61; modChanged = 1; break; //shift+alt+r - F4
+      case 9:  buttonChanged = 62; modChanged = 1; break; //shift+alt+f - F5
+      case 22: buttonChanged = 63; modChanged = 1; break; //shift+alt+s - F6
+      case 25: buttonChanged = 64; modChanged = 1; break; //shift+alt+v - F7
+      case 44: buttonChanged = 65; modChanged = 1; break; //shift+alt+space - F8
     }
   }
   if(mod == 8) {
