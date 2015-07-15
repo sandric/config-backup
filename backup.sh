@@ -16,7 +16,7 @@ cp ~/.vimrc .
 cp ~/.xinitrc .
 cp ~/.xmodmap .
 
-cp ~/sketchbook/USBHIDBootKbd-with-emulation/USBHIDBootKbd-with-emulation.ino .
+cp ~/Arduino/USBHIDBootKbd-with-emulation/USBHIDBootKbd-with-emulation.ino .
 
 mkdir -p xmonad
 cp ~/.xmonad/xmonad.hs xmonad/.

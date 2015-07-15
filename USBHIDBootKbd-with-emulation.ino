@@ -5,8 +5,8 @@
 #include <spi4teensy3.h>
 #endif
 
-#include "TimerOne.h"
-#include "UsbKeyboard.h"
+#include <TimerOne.h>
+#include <UsbKeyboard.h>
 
 volatile uint8_t buttonPressed;
 volatile uint8_t modPressed;
@@ -113,18 +113,11 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
       case 37: buttonChanged = 31; modChanged = 2; break; //@
       case 38: buttonChanged = 34; modChanged = 2; break; //%
       case 39: buttonChanged = 56; modChanged = 2; break; //?
-      
-      case 45: buttonChanged = 49; modChanged = 0; break; //?
-      
-      case 47: buttonChanged = 51; modChanged = 2; break; //{ - ;
-      
+      case 45: buttonChanged = 49; modChanged = 0; break; //?      
+      case 47: buttonChanged = 51; modChanged = 2; break; //{ - ;      
       case 49: buttonChanged = 14; modChanged = 1; break; //?
-      
-      //Make myself a pavlog-dog to push me using another buttons for enter/backspace/delete/tab
-      //case 40: buttonChanged = 30; modChanged = 2; break; //!
-      //case 42: buttonChanged = 30; modChanged = 2; break; //!
-      //case 43: buttonChanged = 30; modChanged = 2; break; //!
-      //case 76: buttonChanged = 30; modChanged = 2; break; //!
+
+      default: buttonChanged = key; modChanged = mod; break;
     }
   }
   if(mod == 2) {
@@ -177,18 +170,20 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
       case 19: buttonChanged = 19; modChanged = 1; break; //leftShift + p - control + p 
       case 26: buttonChanged = 26; modChanged = 1; break; //leftShift + w - control + w 
       
-      //case 52: buttonChanged = 11; modChanged = 1; break; //?
-      
       case 47: buttonChanged = 51; modChanged = 0; break; //
       
       case 49: buttonChanged = 5; modChanged = 1; break; //?
       
       case 9: buttonChanged = 9; modChanged = 1; break; //?
+
+      default: buttonChanged = key; modChanged = mod; break;
     }
   }
   if(mod == 4) {
     switch(key) {
       case 43: buttonChanged = 75; modChanged = 0; break; //Shuffle - ,
+      
+      default: buttonChanged = key; modChanged = mod; break;
     }
   }
   if(mod == 6) {
@@ -202,8 +197,6 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
       
       case 43: buttonChanged = 29; modChanged = 1; break; //Shuffle - ,
       
-      //browser
-      
       case 23: buttonChanged = 59; modChanged = 1; break; //shift+alt+t - F2
       case 7:  buttonChanged = 60; modChanged = 1; break; //shift+alt+d - F3
       case 21: buttonChanged = 61; modChanged = 1; break; //shift+alt+r - F4
@@ -211,22 +204,30 @@ void parseKeystroke(uint8_t key, uint8_t mod) {
       case 22: buttonChanged = 63; modChanged = 1; break; //shift+alt+s - F6
       case 25: buttonChanged = 64; modChanged = 1; break; //shift+alt+v - F7
       case 44: buttonChanged = 65; modChanged = 1; break; //shift+alt+space - F8
+
+      default: buttonChanged = key; modChanged = mod; break;
     }
   }
   if(mod == 8) {
     switch(key) {
       case 7: buttonChanged = 78; modChanged = 0; break; //Shuffle - .
+
+      default: buttonChanged = key; modChanged = mod; break;
     }
   }
   if(mod == 3) {    
       switch(key) {
-      case 17: buttonChanged = 80; modChanged = 1; break;
-      case 12: buttonChanged = 79; modChanged = 1; break;
+        case 17: buttonChanged = 80; modChanged = 1; break;
+        case 12: buttonChanged = 79; modChanged = 1; break;
+
+        default: buttonChanged = key; modChanged = mod; break;
     }
   }
   if(mod == 10) {    
       switch(key) {
-      case 7: buttonChanged = 27; modChanged = 1; break;
+        case 7: buttonChanged = 27; modChanged = 1; break;
+
+        default: buttonChanged = key; modChanged = mod; break;
     }
   }
   if(buttonChanged || modChanged) {

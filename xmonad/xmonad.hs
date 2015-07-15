@@ -19,7 +19,7 @@ import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Actions.CycleWS
-import XMonad.Hooks.EwmhDesktops
+{-import XMonad.Hooks.EwmhDesktops-}
 import XMonad.Actions.SpawnOn
 import XMonad.Actions.WindowGo
 
@@ -277,18 +277,14 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Chrome
   -- open new tab
-  , ((controlMask,xK_F2), spawn "xdotool key 'alt+e'; sudo xdotool key 'ctrl+t'")
-  , ((controlMask,xK_F3), spawn "xdotool key 'alt+e'; sudo xdotool key 'ctrl+w'")
-  , ((controlMask,xK_F5), spawn "xdotool key 'alt+e'; sudo xdotool key 'ctrl+Page_Up'")
-  , ((controlMask,xK_F6), spawn "xdotool key 'alt+e'; sudo xdotool key 'ctrl+Page_Down'")
-  , ((controlMask,xK_F4), spawn "xdotool key 'alt+e'; sudo xdotool key 'ctrl+r'; xdotool key 'alt+e'")
+  , ((controlMask,xK_F2), spawn "xdotool search --onlyvisible --name 'Chrome' windowfocus -sync; xdotool key 'ctrl+t'")
+  , ((controlMask,xK_F3), spawn "xdotool search --onlyvisible --name 'Chrome' windowfocus -sync; xdotool key 'ctrl+w'")
+  , ((controlMask,xK_F5), spawn "xdotool search --onlyvisible --name 'Chrome' windowfocus -sync; xdotool key 'ctrl+Page_Up'")
+  , ((controlMask,xK_F6), spawn "xdotool search --onlyvisible --name 'Chrome' windowfocus -sync; xdotool  key 'ctrl+Page_Down'")
+  , ((controlMask,xK_F4), spawn "xdotool search --onlyvisible --name 'Chrome' windowfocus -sync; xdotool key 'ctrl+r';")
   {-, ((F3), spawn "xdotool key 'alt+e';sudo xdotool key 'ctrl+l'")-}
   {-, ((F3), spawn "sudo xdotool key 'alt+e';sudo xdotool key 'ctrl+shift+j'")-}
 
-  , ((modMask, xK_g),
-    raise (className =? "Chrome")
-    spawn "xdotool key 'ctrl+t'"
-    )
   {-, ((modMask, xK_g), spawnOn "5:web" "google-chrome-stable")-}
 
   ]
@@ -349,7 +345,9 @@ myStatusBar = "conky"
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
 
-  xmonad $ ewmh defaults {
+  {-xmonad $ ewmh defaults -}
+  xmonad $ defaults {
+
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
